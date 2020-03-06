@@ -84,5 +84,8 @@ metastore_db
 # temp folder
 tmp
 
+# virtualenv foldeer
+venv
+
 # mlflow mlruns folder
 mlruns
