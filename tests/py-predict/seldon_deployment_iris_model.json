@@ -1,0 +1,47 @@
+{
+  "apiVersion": "machinelearning.seldon.io/v1alpha2",
+  "kind": "SeldonDeployment",
+  "metadata": {
+      "labels": {
+          "app": "seldon"
+      },
+      "name": "serving-iris-demo"
+  },
+  "spec": {
+      "name": "serving-iris-deployment",
+      "predictors": [
+          {
+              "componentSpecs": [{
+                  "spec": {
+                      "containers": [
+                          {
+                              "image": "abechen/serving-iris-demo:latest",
+                              "imagePullPolicy": "Always",
+                              "name": "serving-iris-classifier",
+                              "resources": {
+                                  "requests": {
+                                      "memory": "1Mi"
+                                  }
+                              }
+                          }
+                      ],
+                      "terminationGracePeriodSeconds": 20
+                  }
+              }],
+              "graph": {
+                  "children": [],
+                  "name": "serving-iris-classifier",
+                  "endpoint": {
+                      "type" : "REST"
+                  },
+                  "type": "MODEL"
+              },
+              "name": "classifier",
+              "replicas": 2,
+              "annotations": {
+              "predictor_version" : "0.1"
+              }
+          }
+      ]
+  }
+}
