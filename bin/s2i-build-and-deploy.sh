@@ -9,7 +9,7 @@ export WRAPPER_BASE_IMAGE=seldonio/seldon-core-s2i-python36:0.13
 #TODO
 
 # use s2i to wrap files and base image
-s2i build --context-dir="${APP_HOME}"/target ${WRAPPER_BASE_IMAGE} ${IMAGE_NAME}
+s2i build "${APP_HOME}"/target/py-predict ${WRAPPER_BASE_IMAGE} ${IMAGE_NAME}
 
 # deploy docker image to harbor registry
 docker tag ${IMAGE_NAME} ${REGISTRY_PROJECT}/${IMAGE_NAME}
