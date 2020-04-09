@@ -1,9 +1,0 @@
-name: iris
-
-conda_env: conda.yaml
-
-entry_points:
-  main:
-    parameters:
-      random_state: int
-    command: "python train.py {random_state}"
